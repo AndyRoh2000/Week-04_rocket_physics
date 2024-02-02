@@ -23,10 +23,6 @@ class Play extends Phaser.Scene {
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0)
         this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0)
 
-        this.physics.add.collider(this.p1Rocket, this.ship01, this.handleCollision, null, this)
-        this.physics.add.collider(this.p1Rocket, this.ship02, this.handleCollision, null, this)
-        this.physics.add.collider(this.p1Rocket, this.ship03, this.handleCollision, null, this)
-
 
         // white borders
         this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0)
@@ -36,6 +32,12 @@ class Play extends Phaser.Scene {
         
         // add rocket (p1)
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0, 0.5)
+
+
+        this.physics.add.collider(this.p1Rocket, this.ship01, this.handleCollision, null, this)
+        this.physics.add.collider(this.p1Rocket, this.ship02, this.handleCollision, null, this)
+        this.physics.add.collider(this.p1Rocket, this.ship03, this.handleCollision, null, this)
+
 
         // define keys
         keyFIRE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
